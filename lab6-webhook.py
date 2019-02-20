@@ -28,6 +28,14 @@ def pushDataToDatabase(name,age):
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'static')
 
 
+@app.route("/api/bot",methods = ['POST'])
+def hook():
+	webhookMessage = request.json()
+	print(webhookMessage)
+	messageId = webhookMessage["data"]["id"]
+	print(messageId)
+	return jsonify(webhookMessage)
+
 @app.route("/<path:path>",methods = ['GET'])
 def serve_static_dir(path):
 	return send_from_directory(static_file_dir,path)
