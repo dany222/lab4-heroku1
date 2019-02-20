@@ -31,11 +31,11 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'stat
 @app.route("/<path:path>",methods = ['GET'])
 def serve_static_dir(path):
 	return send_from_directory(static_file_dir,path)
-
+"""
 @app.route("/")
 def index():
 	return app.send_static_file('index.html')
-
+"""
 @app.route("/api/helloworld")
 def hello():
 	return("Hello World!")
