@@ -38,6 +38,7 @@ def hook():
 	url = "https://api.ciscospark.com/v1/messages/" + messageId
 	r = requests.get(url,headers={'Authorization' : 'Bearer <ZGZkNTQ2Y2YtMzVjYi00NzE0LWJjMjMtNzQ4YTA0Y2I3YWY3ZWUzMjQ4MjEtZGI3_PF84_consumer>'})
 	message = r.json()["text"]
+	print(message)
 	return jsonify(webhookMessage)
 
 @app.route("/<path:path>",methods = ['GET'])
