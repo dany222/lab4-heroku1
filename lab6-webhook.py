@@ -1,7 +1,7 @@
 from flask import Flask,jsonify,request,send_from_directory
 import sqlite3
 import os
-import requests
+#import requests
 
 app = Flask(__name__)
 
@@ -29,17 +29,17 @@ def pushDataToDatabase(name,age):
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'static')
 
 
-@app.route("/api/bot",methods = ['POST'])
-def hook():
-	webhookMessage = request.json
-	print(webhookMessage)
-	messageId = webhookMessage["data"]["id"]
-	print(messageId)
-	# url = "https://api.ciscospark.com/v1/messages/" + messageId
-	# r = requests.get(url,headers={'Authorization' : 'Bearer ZGZkNTQ2Y2YtMzVjYi00NzE0LWJjMjMtNzQ4YTA0Y2I3YWY3ZWUzMjQ4MjEtZGI3_PF84_consumer'})
-	# message = r.json()["text"]
-	# print(message)
-	return jsonify(webhookMessage)
+# @app.route("/api/bot",methods = ['POST'])
+# def hook():
+# 	webhookMessage = request.json
+# 	print(webhookMessage)
+# 	messageId = webhookMessage["data"]["id"]
+# 	print(messageId)
+# 	# url = "https://api.ciscospark.com/v1/messages/" + messageId
+# 	# r = requests.get(url,headers={'Authorization' : 'Bearer ZGZkNTQ2Y2YtMzVjYi00NzE0LWJjMjMtNzQ4YTA0Y2I3YWY3ZWUzMjQ4MjEtZGI3_PF84_consumer'})
+# 	# message = r.json()["text"]
+# 	# print(message)
+# 	return jsonify(webhookMessage)
 
 @app.route("/<path:path>",methods = ['GET'])
 def serve_static_dir(path):
