@@ -38,10 +38,18 @@ def hook():
 	print(webhookMessage)
 	messageId = webhookMessage["data"]["id"]
 	print(messageId)
-	url = "https://api.ciscospark.com/v1/messages/" + messageId
-	r = requests.get(url,headers={'Authorization' : 'Bearer ZGZkNTQ2Y2YtMzVjYi00NzE0LWJjMjMtNzQ4YTA0Y2I3YWY3ZWUzMjQ4MjEtZGI3_PF84_consumer'})
+	
+	url = "https://api.ciscospark.com/v1/messages"
+	botAccessToken = "NDNjY2NkYWYtZjFjNC00ZjMwLTkzMjAtMWY1NmVjZWVlODcxOTE1ZGI1MjUtMTI4_PF84_consumer"
+	r = requests.get(url + "/" + messageId,headers={'Authorization' : 'Bearer ' + botAccessToken})
 	message = r.json()["text"]
 	print(message)
+
+	if message[0:18] == "Hello Hello":
+		roomId = r.json()["roomId"]
+		r = requests.post(url,headers ={'Authorization' : 'Bearer ' + botAccessToken}, 
+			data  = {'roomId' : roomId, 'text' : 'Hello from your bot!'})
+			
 	return jsonify(webhookMessage)
 
 @app.route("/<path:path>",methods = ['GET'])
