@@ -33,27 +33,30 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'stat
 
 
 @app.route("/api/bot",methods = ['POST'])
-def hook():
+@app.route("/api/bot", methods = ['POST'])
+def bot():
+	# process message data
 	webhookMessage = request.json
 	print(webhookMessage)
 	messageId = webhookMessage["data"]["id"]
 	print(messageId)
-
-	url = "https://api.ciscospark.com/v1/messages"
+	
+	#get message text
+	messageApiUrl = "https://api.ciscospark.com/v1/messages" 
+	# wth2018-3456
 	botAccessToken = "ZjgwOTdhMDUtODQ2Yy00ZTkxLThhMjQtODEzOTgwNjVmMjdjOTc2NjMxNDctYzVi_PF84_consumer"
-	r = requests.get(url + "/" + messageId,headers={'Authorization' : 'Bearer ' + botAccessToken})
-	print (r)
+	botId = "Y2lzY29zcGFyazovL3VzL0FQUExJQ0FUSU9OL2YzOTcxZjZiLWJlZDAtNDg4YS1hNjRkLTI3MjJlMDkzMThmMQ"
+	
+	r = requests.get(messageApiUrl + "/" + messageId, headers={'Authorization': 'Bearer ' + botAccessToken})
+	print(r.json())
 	message = r.json()["text"]
-	print(message)	
+	print(message)
 
-
-	# roomId = r.json()["roomId"]
-	# r = requests.post(url,headers ={'Authorization' : 'Bearer ' + botAccessToken}, 
-	# 	data  = {'roomId' : roomId, 'text' : 'Hello from your bot!'})
-			
-
+	#send answer if bot mentioned
+	if message[0:18] == "Hello Hello":
+		roomId = r.json()["roomId"]
+		r = requests.post(messageApiUrl, headers={'Authorization': 'Bearer ' + botAccessToken}, data={'roomId': roomId, 'text': 'Hello from your bot!'})
 	return jsonify(webhookMessage)
-
 @app.route("/<path:path>",methods = ['GET'])
 def serve_static_dir(path):
 	return send_from_directory(static_file_dir,path)
