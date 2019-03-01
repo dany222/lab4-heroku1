@@ -46,6 +46,7 @@ def hook():
 	message = r.json()["text"]
 	print(message)	
 
+
 	# roomId = r.json()["roomId"]
 	# r = requests.post(url,headers ={'Authorization' : 'Bearer ' + botAccessToken}, 
 	# 	data  = {'roomId' : roomId, 'text' : 'Hello from your bot!'})
