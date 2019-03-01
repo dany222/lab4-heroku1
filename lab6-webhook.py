@@ -53,7 +53,7 @@ def bot():
 	print(message)
 
 	#send answer if bot mentioned
-	if message[0:18] == "wth-valami Hello":
+	if message[0:15] == "wth-valami Hello":
 		roomId = r.json()["roomId"]
 		r = requests.post(messageApiUrl, headers={'Authorization': 'Bearer ' + botAccessToken}, data={'roomId': roomId, 'text': 'Hello from your bot!'})
 	return jsonify(webhookMessage)
