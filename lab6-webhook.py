@@ -50,7 +50,7 @@ def hook():
 	# 	data  = {'roomId' : roomId, 'text' : 'Hello from your bot!'})
 			
 
-	# return jsonify(webhookMessage)
+	return jsonify(webhookMessage)
 
 @app.route("/<path:path>",methods = ['GET'])
 def serve_static_dir(path):
