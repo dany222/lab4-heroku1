@@ -44,10 +44,10 @@ def hook():
 	r = requests.get(url + "/" + messageId,headers={'Authorization' : 'Bearer ' + botAccessToken})
 	message = r.json()["text"]
 	print(message)	
-	if message[0:18] == "Hello Hello":
-		roomId = r.json()["roomId"]
-		r = requests.post(url,headers ={'Authorization' : 'Bearer ' + botAccessToken}, 
-			data  = {'roomId' : roomId, 'text' : 'Hello from your bot!'})
+
+	roomId = r.json()["roomId"]
+	r = requests.post(url,headers ={'Authorization' : 'Bearer ' + botAccessToken}, 
+		data  = {'roomId' : roomId, 'text' : 'Hello from your bot!'})
 			
 
 	return jsonify(webhookMessage)
