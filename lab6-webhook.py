@@ -40,7 +40,7 @@ def hook():
 	print(messageId)
 
 	url = "https://api.ciscospark.com/v1/messages"
-	botAccessToken = "NDNjY2NkYWYtZjFjNC00ZjMwLTkzMjAtMWY1NmVjZWVlODcxOTE1ZGI1MjUtMTI4_PF84_consumer"
+	botAccessToken = "ZjgwOTdhMDUtODQ2Yy00ZTkxLThhMjQtODEzOTgwNjVmMjdjOTc2NjMxNDctYzVi_PF84_consumer"
 	r = requests.get(url + "/" + messageId,headers={'Authorization' : 'Bearer ' + botAccessToken})
 	print (r)
 	message = r.json()["text"]
