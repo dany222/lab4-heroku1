@@ -39,11 +39,11 @@ def hook():
 	messageId = webhookMessage["data"]["id"]
 	print(messageId)
 
-	# url = "https://api.ciscospark.com/v1/messages"
-	# botAccessToken = "NDNjY2NkYWYtZjFjNC00ZjMwLTkzMjAtMWY1NmVjZWVlODcxOTE1ZGI1MjUtMTI4_PF84_consumer"
-	# r = requests.get(url + "/" + messageId,headers={'Authorization' : 'Bearer ' + botAccessToken})
-	# message = r.json()["text"]
-	# print(message)	
+	url = "https://api.ciscospark.com/v1/messages"
+	botAccessToken = "NDNjY2NkYWYtZjFjNC00ZjMwLTkzMjAtMWY1NmVjZWVlODcxOTE1ZGI1MjUtMTI4_PF84_consumer"
+	r = requests.get(url + "/" + messageId,headers={'Authorization' : 'Bearer ' + botAccessToken})
+	message = r.json()["text"]
+	print(message)	
 
 	# roomId = r.json()["roomId"]
 	# r = requests.post(url,headers ={'Authorization' : 'Bearer ' + botAccessToken}, 
