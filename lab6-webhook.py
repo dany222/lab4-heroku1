@@ -34,7 +34,7 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)),'stat
 
 @app.route("/api/bot",methods = ['POST'])
 def hook():
-	webhookMessage = request.json()
+	webhookMessage = request.json
 	print(webhookMessage)
 	messageId = webhookMessage["data"]["id"]
 	print(messageId)
