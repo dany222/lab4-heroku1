@@ -44,8 +44,8 @@ def bot():
 	#get message text
 	messageApiUrl = "https://api.ciscospark.com/v1/messages" 
 	# wth2018-3456
-	botAccessToken = "ZjgwOTdhMDUtODQ2Yy00ZTkxLThhMjQtODEzOTgwNjVmMjdjOTc2NjMxNDctYzVi_PF84_consumer"
-	botId = "Y2lzY29zcGFyazovL3VzL0FQUExJQ0FUSU9OL2YzOTcxZjZiLWJlZDAtNDg4YS1hNjRkLTI3MjJlMDkzMThmMQ"
+	botAccessToken = "YmJmNDA4YTgtNDQ1Ny00NzVmLWEyZTMtYWUyNWNjZjM4ZWY4MWRjYzUyZWUtOTUz_PF84_consumer"
+
 	
 	r = requests.get(messageApiUrl + "/" + messageId, headers={'Authorization': 'Bearer ' + botAccessToken})
 	print(r.json())
@@ -53,7 +53,7 @@ def bot():
 	print(message)
 
 	#send answer if bot mentioned
-	if message[0:18] == "Hello Hello":
+	if message[0:18] == "wtf-valami Hello":
 		roomId = r.json()["roomId"]
 		r = requests.post(messageApiUrl, headers={'Authorization': 'Bearer ' + botAccessToken}, data={'roomId': roomId, 'text': 'Hello from your bot!'})
 	return jsonify(webhookMessage)
